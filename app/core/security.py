@@ -8,7 +8,7 @@ import logging
 from app.core.config import settings
 from app.core.database import get_async_db
 from app.core.utils.response.exceptions import Exceptions
-from app.crud.user import user_crud
+from app.crud.user.user_crud import user_crud
 
 from app.models import User, UserRole
 

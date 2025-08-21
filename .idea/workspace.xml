@@ -5,43 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a184538-f5ef-4a0a-9ccd-5fc452f27e5d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/x-sell-v2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/core/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/core/database.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/core/dependencies.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/core/security.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/core/utils/generate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/core/utils/response/exceptions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/core/utils/response/success.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/core/utils/token_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/crud/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/crud/user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/cart.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/category.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/delivery.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/merchant.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/order.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/product.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/review.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/shop.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/routes/api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/cart.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/category.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/order.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/product.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/search.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/shop.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/crud/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/crud/delivery.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/crud/marchant.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/crud/review.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/crud/user/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/crud/user/refreshed_token_crud.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/crud/user/verification_code_crud.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/auth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/cart.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/catalog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/categories.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/delivery.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/merchants.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/orders.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/products.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/reviews.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/shops.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/security.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/security.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud/user/user_crud.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/api.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,9 +47,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="31XancOWMaj9GwPI7MHRjXE1VWn" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -73,15 +62,20 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/mia/Documents/projects/x-sell-v2/app/core"
+    "last_opened_file_path": "/home/mia/Documents/projects/x-sell-v2/app/crud/user"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/crud/user" />
+      <recent name="$PROJECT_DIR$/app/routes" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app/core" />
       <recent name="$PROJECT_DIR$/app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/crud/user" />
+      <recent name="$PROJECT_DIR$/app/crud" />
       <recent name="$PROJECT_DIR$/app" />
     </key>
   </component>
