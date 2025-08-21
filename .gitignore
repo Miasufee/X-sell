@@ -1,0 +1,5 @@
+.venv
+db_migrations
+.env
+alembic.ini
+__pycach__

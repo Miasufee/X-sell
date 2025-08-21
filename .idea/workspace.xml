@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4a184538-f5ef-4a0a-9ccd-5fc452f27e5d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/x-sell-v2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/database.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/dependencies.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/security.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/utils/generate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/utils/response/exceptions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/utils/response/success.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/utils/token_manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/crud/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/crud/user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/cart.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/category.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/delivery.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/merchant.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/order.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/product.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/review.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/shop.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/api.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/cart.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/category.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/order.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/product.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/search.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/shop.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/user.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="31XancOWMaj9GwPI7MHRjXE1VWn" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/mia/Documents/projects/x-sell-v2/app/core"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/core" />
+      <recent name="$PROJECT_DIR$/app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-d9fa9deec7cb-d902c0275401-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-252.23892.515" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a184538-f5ef-4a0a-9ccd-5fc452f27e5d" name="Changes" comment="" />
+      <created>1755673038694</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1755673038694</updated>
+    </task>
+    <servers />
+  </component>
+</project>
