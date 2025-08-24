@@ -90,6 +90,7 @@ class UserLogin(LoginBase):
 
 class AdminLogin(LoginBase):
     hashed_password: str
+    unique_id: str
 
 
 class SuperUserCreate(AdminLogin):
@@ -97,7 +98,10 @@ class SuperUserCreate(AdminLogin):
 
 
 class SuperUserLogin(AdminLogin):
-    unique_id: str
+    pass
+
+class SuperAdmin(AdminLogin):
+    pass
 
 
 class ApproveRequest(LoginBase):
@@ -151,3 +155,19 @@ class LoginAPIResponse(BaseModel):
     status_code: int
     detail: str
     data: LoginResponseData
+
+class RoleUpdateRequest(BaseModel):
+    email: EmailStr
+    new_role: UserRole
+
+class ToggleRoleAPIResponse(BaseModel):
+    message: str
+    data: dict
+    
+
+class PasswordResetPayload(BaseModel):
+    email: EmailStr
+    verification_code: str
+    new_password: str
+    unique_id: Optional[str] = None
+    superuser_secret_key: Optional[str] = None

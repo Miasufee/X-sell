@@ -37,17 +37,14 @@ class User(Base, IntIdMixin, TimeStampMixin):
     orders = relationship("Order", back_populates="user")
     reviews = relationship("Review", back_populates="user")
     favorites = relationship("Favorite", back_populates="user")
-    merchant_application = relationship("MerchantApplication", foreign_keys="MerchantApplication.user_id", back_populates="user", uselist=False)
+    merchant_application = relationship("MerchantApplication", foreign_keys="MerchantApplication.user_id",
+                                        back_populates="user", uselist=False)
     profile = relationship("UserProfile", uselist=False, back_populates="user", cascade="all, delete-orphan")
     social_accounts = relationship("SocialAccount", back_populates="user", cascade="all, delete-orphan")
     phone_numbers = relationship("PhoneNumber", back_populates="user", cascade="all, delete-orphan")
     addresses = relationship("Address", back_populates="user", cascade="all, delete-orphan")
     verification_codes = relationship("VerificationCode", back_populates="user", cascade="all, delete-orphan")
     refreshed_tokens = relationship("RefreshedToken", back_populates="user", cascade="all, delete-orphan")
-    devices = relationship("UserDevice", back_populates="user", cascade="all, delete-orphan",
-                           order_by="UserDevice.is_primary.desc()")
-    sessions = relationship("UserSession", back_populates="user", cascade="all, delete-orphan",
-                            order_by="UserSession.last_activity_at.desc()")
 
 
 class UserProfile(Base, IntIdMixin, TimeStampMixin):

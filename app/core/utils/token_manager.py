@@ -5,8 +5,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.utils.generate import Token
 from app.core.utils.response.exceptions import Exceptions
-from app.crud.user_management import refreshed_token_crud
-from app.models.user.user import User
+from app.crud.user import refreshed_token_crud
+from app.models.user import User
 from app.core.security import SecurityManager
 
 

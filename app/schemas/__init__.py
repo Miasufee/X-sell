@@ -4,9 +4,6 @@ from app.schemas.user import (
     UserUpdate,
     UserResponse,
     UserLogin,
-    PasswordReset,
-    PasswordResetConfirm,
-    TokenResponse
 )
 from app.schemas.product import (
     ProductBase,
@@ -61,7 +58,7 @@ from app.schemas.order import (
 
 __all__ = [
     "UserBase", "UserCreate", "UserUpdate", "UserResponse",
-    "UserLogin", "PasswordReset", "PasswordResetConfirm", "TokenResponse",
+    "UserLogin",
     "ProductBase", "ProductCreate", "ProductUpdate", "ProductResponse",
     "ProductListResponse", "ProductFilter", "ProductImageBase",
     "ProductImageCreate", "ProductImageResponse",

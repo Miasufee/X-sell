@@ -10,13 +10,11 @@ from jose import jwt, JWTError
 from pydantic import BaseModel
 
 from app.core.config import settings
-from app.crud.user_management.verification_code_crud import verification_code_crud
+from app.crud.verification_code_crud import verification_code_crud
 
 
 class IDPrefix(Enum):
     """Prefixes for different ID types"""
-    VIDEO = "VI"
-    LIVE_STREAM = "LS"
     USER = "US"
     SUPERUSER = "SU"
     SUPER_ADMIN = "SA"

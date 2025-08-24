@@ -8,6 +8,7 @@ import logging
 
 from app.core.config import settings
 from app.core.database import init_db, close_db
+from app.routes.api import api_router
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -52,6 +53,7 @@ app.add_middleware(
 )
 
 # Include API router
+app.include_router(api_router, prefix="")
 
 @app.exception_handler(IntegrityError)
 async def integrity_error_handler(request: Request, exc: IntegrityError):

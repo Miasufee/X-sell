@@ -8,7 +8,7 @@ import logging
 from app.core.config import settings
 from app.core.database import get_async_db
 from app.core.utils.response.exceptions import Exceptions
-from app.crud.user.user_crud import user_crud
+from app.crud.user_crud import user_crud
 
 from app.models import User, UserRole
 
@@ -81,7 +81,7 @@ class SecurityManager:
 
             token_version: int = payload.get("version", 0)
 
-            user = await user_crud.get_by_id(db, user_id)
+            user = await user_crud.get_user_by_id(db, user_id)
             if user is None:
                 raise Exceptions.credentials_exception()
 
