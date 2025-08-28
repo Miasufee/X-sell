@@ -66,35 +66,3 @@ async def toggle_flag(db: AsyncSession, actor: User, target_email, flag: str):
         data={"email": db_user.email, flag: getattr(db_user, flag)},
     )
 
-async def update_role(db: AsyncSession, actor: User, target_email: str, new_role: UserRole):
-    db_user = await user_crud.get(db=db, email=target_email)
-    if not db_user:
-        raise Exceptions.not_found("User not found")
-    if not isinstance(new_role, UserRole):
-        raise Exceptions.bad_request("Invalid role")
-
-    # RULES
-    if actor.role == UserRole.SUPERUSER:
-        pass  # full control
-    elif actor.role == UserRole.SUPER_ADMIN:
-       if db_user.role not in [UserRole.USER, UserRole.ADMIN] or new_role not in [UserRole.USER, UserRole.ADMIN]:
-            raise Exceptions.forbidden("SUPER_ADMIN can only toggle USER ↔ ADMIN")
-    else:
-        raise Exceptions.forbidden("Only SUPERUSER or SUPER_ADMIN can change roles")
-
-    # 🚫 Prevent downgrading SUPERUSER
-    if db_user.role == UserRole.SUPERUSER and new_role != UserRole.SUPERUSER:
-        raise Exceptions.forbidden("Cannot change role of SUPERUSER")
-
-    # --- Role transition logic ---
-    if new_role == UserRole.ADMIN:
-        db_user.role, db_user.unique_id = UserRole.ADMIN, IDGenerator.generate_id(IDPrefix.ADMIN, 12)
-    elif new_role == UserRole.SUPER_ADMIN:
-        db_user.role, db_user.unique_id = UserRole.SUPER_ADMIN, IDGenerator.generate_id(IDPrefix.SUPER_ADMIN, 12)
-    elif new_role == UserRole.USER:
-        if db_user.role == UserRole.USER:
-            raise Exceptions.forbidden("User already has USER role")
-        db_user.role, db_user.unique_id = UserRole.USER, None
-
-    await db.commit()
-    await db.refresh(db_user)

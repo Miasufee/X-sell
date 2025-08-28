@@ -3,6 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_async_db
 from app.core.dependencies import SuperUser
+from app.schemas import UserResponse
 from app.schemas.user import (
     SuperUserCreate,
     SuperUserLogin,
@@ -12,9 +13,10 @@ from app.schemas.user import (
     RoleUpdateRequest,
     ToggleRoleAPIResponse
 )
-from app.services.auth.auth_utils import login
+from app.services.auth.auth_utils import login, update_role, _get_user_list
 from app.services.auth.superuser_service import create_superuser, toggle_flag
-
+import logging
+logger = logging.getLogger(__name__)
 router = APIRouter()
 
 
@@ -27,10 +29,17 @@ async def _create_superuser(payload: SuperUserCreate, db: AsyncSession = Depends
         secret_key=payload.superuser_secret_key
     )
 
+
+
 @router.post("/login", response_model=LoginAPIResponse)
 async def login_superuser(payload: SuperUserLogin, db: AsyncSession = Depends(get_async_db)):
+    # Log the full payload received
+    logger.info("Login request payload: %s", payload.dict())
+
     return await login(
-        db=db, email=payload.email, password=payload.hashed_password,
+        db=db,
+        email=payload.email,
+        password=payload.password,
         unique_id=payload.unique_id
     )
 
@@ -42,6 +51,10 @@ async def toggle_super_admin_flag(req: ApproveRequest, db: AsyncSession = Depend
 async def toggle_admin_flag(req: ApproveRequest, db: AsyncSession = Depends(get_async_db), actor: SuperUser = None):
     return await toggle_flag(db, actor, req.email, "admin_approval")
 
-@router.post("/role/update", response_model=ToggleRoleAPIResponse)
-async def update_role(req: RoleUpdateRequest, db: AsyncSession = Depends(get_async_db), actor: SuperUser = None):
+@router.post("/role/update")
+async def _update_role(req: RoleUpdateRequest, db: AsyncSession = Depends(get_async_db), actor: SuperUser = None):
     return await update_role(db, actor, req.email, req.new_role)
+
+@router.get("/users")
+async def get_users_lists(db: AsyncSession = Depends(get_async_db), _: SuperUser = None):
+    return await _get_user_list(db)

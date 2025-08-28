@@ -18,17 +18,26 @@ from app.schemas import UserResponse
 
 
 # -------------------- LOGIN --------------------
+import logging
+logger = logging.getLogger(__name__)
+
 async def login(db: AsyncSession, email, password: str, unique_id: str):
     """
     Authenticate user with email, password, and unique_id.
     - Performs constant-time check to prevent timing attacks.
     - Verifies account status and role restrictions.
     """
+    logger.info("Login attempt started for email=%s", email)
+
     if not email or not password or not unique_id:
+        logger.info("Missing credentials: email=%s, unique_id=%s", email, unique_id)
         raise Exceptions.invalid_credentials()
 
     await asyncio.sleep(random.uniform(0.05, 0.15))  # constant-time check
-    db_user = await user_crud.get(db=db, email=email)
+    logger.info("Performed constant-time check delay")
+
+    db_user = await user_crud.get_user_by_email(db=db, email=email)
+    logger.info("Fetched user from DB: %s", "FOUND" if db_user else "NOT FOUND")
 
     # Placeholders for timing attack resistance
     fake_hash = security_manager.hash_password("fake_password")
@@ -39,17 +48,24 @@ async def login(db: AsyncSession, email, password: str, unique_id: str):
 
     password_ok = security_manager.verify_password(password, hashed_password_to_check)
     unique_id_ok = unique_id == unique_id_to_check
+    logger.info("Password check: %s | Unique ID check: %s", password_ok, unique_id_ok)
 
     if not (db_user and password_ok and unique_id_ok):
+        logger.info("Invalid credentials for email=%s", email)
         raise Exceptions.invalid_credentials()
 
     # --- DB conditions ---
     if not db_user.is_verified:
+        logger.info("User %s is not verified", email)
         raise Exceptions.forbidden("Email not verified")
-    if db_user.role in [UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.SUPERUSER] and not db_user.admin_approval:
+
+    if not db_user.role in [UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.SUPERUSER]:
+        logger.info("User %s does not have admin-level role. Role=%s", email, db_user.role)
         raise Exceptions.forbidden("Admin approval required")
 
     tokens, _ = await token_manager.create_tokens(db, db_user)
+    logger.info("Tokens created for user %s", email)
+
     return Success.login_success(
         access_token=tokens.access_token,
         refresh_token=tokens.refresh_token,
@@ -57,12 +73,13 @@ async def login(db: AsyncSession, email, password: str, unique_id: str):
     )
 
 
+
 # -------------------- EMAIL VERIFICATION --------------------
-async def get_verification_code(db: AsyncSession, email: str):
+async def get_verification_code(db: AsyncSession, email):
     """
     Generate and send a verification code to the user’s email.
     """
-    db_user = await user_crud.get_by_email(db, email)
+    db_user = await user_crud.get_user_by_email(db, email)
     if not db_user:
         raise Exceptions.email_not_registered()
 
@@ -70,11 +87,11 @@ async def get_verification_code(db: AsyncSession, email: str):
     return Success.verification_code_sent(verification_code)
 
 
-async def verify_email(db: AsyncSession, email: str, verification_code: str):
+async def verify_email(db: AsyncSession, email, verification_code: str):
     """
     Verify the user’s email with the provided verification code.
     """
-    db_user = await user_crud.get_by_email(db, email=email)
+    db_user = await user_crud.get_user_by_email(db, email=email)
     if not db_user:
         raise Exceptions.email_not_registered()
 
@@ -111,7 +128,8 @@ async def update_role(db: AsyncSession, actor: User, target_email, new_role: Use
     # 🚫 Prevent downgrading SUPERUSER
     if db_user.role == UserRole.SUPERUSER and new_role != UserRole.SUPERUSER:
         raise Exceptions.forbidden("Cannot change role of SUPERUSER")
-
+    if db_user.role == new_role:
+        raise Exceptions.already_verified(detail="already upgrade role")
     # --- Role transition logic ---
     if new_role == UserRole.ADMIN:
         db_user.role = UserRole.ADMIN
@@ -132,7 +150,7 @@ async def update_role(db: AsyncSession, actor: User, target_email, new_role: Use
 # -------------------- PASSWORD RESET --------------------
 async def request_password_reset(
     db: AsyncSession,
-    email: str,
+    email,
     unique_id: str | None = None,
     superuser_secret_key: str | None = None,
 ):
@@ -142,7 +160,7 @@ async def request_password_reset(
     - Admin/SuperAdmin → requires email and unique_id.
     - Normal users are not allowed.
     """
-    db_user = await user_crud.get_by_email(db, email)
+    db_user = await user_crud.get_user_by_email(db, email)
     if not db_user:
         raise Exceptions.email_not_registered()
     if not db_user.is_verified:
@@ -169,12 +187,12 @@ async def request_password_reset(
     return Success.verification_code_sent(verification_code)
 
 
-async def verify_reset_code(db: AsyncSession, email: str, verification_code: str):
+async def verify_reset_code(db: AsyncSession, email, verification_code: str):
     """
     Step 2: Verify reset code.
     - If verified → generate a temporary OTP unique_id.
     """
-    db_user = await user_crud.get_by_email(db, email=email)
+    db_user = await user_crud.get_user_by_email(db, email=email)
     if not db_user:
         raise Exceptions.email_not_registered()
 
@@ -200,7 +218,7 @@ async def verify_reset_code(db: AsyncSession, email: str, verification_code: str
 
 async def reset_password_with_otp(
     db: AsyncSession,
-    email: str,
+    email,
     otp_unique_id: str,
     new_password: str
 ):
@@ -209,7 +227,7 @@ async def reset_password_with_otp(
     - Requires email + OTP (unique_id) + new password.
     - Invalidates OTP after use by rotating unique_id.
     """
-    db_user = await user_crud.get_by_email(db, email=email)
+    db_user = await user_crud.get_user_by_email(db, email=email)
     if not db_user:
         raise Exceptions.email_not_registered()
 
@@ -234,3 +252,6 @@ async def reset_password_with_otp(
         message="Password reset successfully",
         data={"email": db_user.email, "role": db_user.role.value},
     )
+
+async def _get_user_list(db: AsyncSession):
+    return await user_crud.get_users(db)

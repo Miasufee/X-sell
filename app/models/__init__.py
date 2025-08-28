@@ -1,7 +1,8 @@
 from app.models.user import User, UserRole
 from app.models.category import Category
 from app.models.shop import Shop
-from app.models.product import Product, ProductImage, ProductStatus
+from app.models.product import (Product, ProductImage, ProductStatus, ProductAttribute,
+                                ProductAttributeValue, ProductVariantAttribute, ProductVariant)
 from app.models.cart import Cart, CartItem
 from app.models.order import Order, OrderItem, OrderStatus
 from app.models.delivery import Delivery, DeliveryStatus
@@ -12,7 +13,8 @@ __all__ = [
     "User", "UserRole",
     "Category",
     "Shop",
-    "Product", "ProductImage", "ProductStatus",
+    "Product", "ProductImage", "ProductStatus", "ProductAttribute",
+    "ProductAttributeValue", "ProductVariant", "ProductVariantAttribute",
     "Cart", "CartItem",
     "Order", "OrderItem", "OrderStatus",
     "Delivery", "DeliveryStatus",

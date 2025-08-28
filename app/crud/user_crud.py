@@ -14,8 +14,16 @@ class UserCrud(CrudBase[User]):
         return await self.get(db, email=email)
 
     async def get_user_by_id(self, db: AsyncSession, user_id: int) -> Optional[User]:
-        """ get user by id"""
+        """Get user by id"""
         return await self.get(db, id=user_id)
+
+    async def get_users(self, db: AsyncSession, skip: int = 0, limit: int = 100):
+        """Get multiple users (basic pagination using skip/limit)"""
+        return await self.get_multi(db, skip=skip, limit=limit)
+
+    async def paginate_users(self, db: AsyncSession, page: int = 1, per_page: int = 20):
+        """Get paginated users with metadata"""
+        return await self.paginate(db, page=page, per_page=per_page)
 
 
 user_crud = UserCrud()
