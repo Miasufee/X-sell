@@ -1,7 +1,7 @@
 from typing import Optional
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.crud.base import CrudBase
+from app.crud.crud_base import CrudBase
 from app.models import User
 
 

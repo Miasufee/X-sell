@@ -2,7 +2,7 @@ from typing import Optional, Sequence
 from datetime import datetime, timezone
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import and_, delete
-from app.crud.base import CrudBase
+from app.crud.crud_base import CrudBase
 from app.models.user import VerificationCode
 
 

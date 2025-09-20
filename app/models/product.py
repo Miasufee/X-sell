@@ -23,12 +23,12 @@ class Product(Base, IntIdMixin, TimeStampMixin):
     view_count = Column(Integer, default=0)
 
     # Foreign Keys
-    category_id = Column(Integer, ForeignKey("categories.id"), nullable=False)
+    subcategory_id = Column(Integer, ForeignKey("sub_categories.id"), nullable=True)
     shop_id = Column(Integer, ForeignKey("shops.id"), nullable=False)
     merchant_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
     # Relationships
-    category = relationship("Category", back_populates="products")
+    subcategory = relationship("SubCategory", back_populates="products")
     shop = relationship("Shop", back_populates="products")
     merchant = relationship("User", back_populates="products")
 
@@ -39,6 +39,8 @@ class Product(Base, IntIdMixin, TimeStampMixin):
     # New relationships
     variants = relationship("ProductVariant", back_populates="product", cascade="all, delete-orphan")
     attributes = relationship("ProductAttribute", back_populates="product", cascade="all, delete-orphan")
+    order_items = relationship("OrderItem", back_populates="product", cascade="all, delete-orphan")
+    cart_items = relationship("CartItem", back_populates="product", cascade="all, delete-orphan")
 
 
 class ProductImage(Base, IntIdMixin, TimeStampMixin):

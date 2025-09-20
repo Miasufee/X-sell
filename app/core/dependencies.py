@@ -17,10 +17,22 @@ async def _current_user(
 ) -> User:
     return await get_security_manager().get_current_user(request=request, db=db)
 
+async def _regular_user(current_user: User = Depends(_current_user)):
+    if current_user.role not in [UserRole.USER]:
+        from app.core.utils.response.exceptions import Exceptions
+        raise Exceptions.permission_denied()
+    return current_user
+
+
+async def _merchant_user(current_user: User = Depends(_current_user)):
+    if current_user.role not in [UserRole.MERCHANT]:
+        from app.core.utils.response.exceptions import Exceptions
+        raise Exceptions.permission_denied()
+    return current_user
+
 async def _admin_user(
     current_user: User = Depends(_current_user)
 ) -> User:
-    security_manager = get_security_manager()
     if current_user.role not in [UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.SUPERUSER]:
         from app.core.utils.response.exceptions import Exceptions
         raise Exceptions.permission_denied()
@@ -45,6 +57,8 @@ async def _super_user(
 
 # ---- Annotated aliases ----
 CurrentUser: TypeAlias = Annotated[User, Depends(_current_user)]
+RegularUser: TypeAlias = Annotated[User, Depends(_current_user)]
+MerchantUser: TypeAlias = Annotated[User, Depends(_current_user)]
 AdminUser: TypeAlias = Annotated[User, Depends(_admin_user)]
 SuperAdminUser: TypeAlias = Annotated[User, Depends(_super_admin_user)]
 SuperUser: TypeAlias = Annotated[User, Depends(_super_user)]

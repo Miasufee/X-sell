@@ -1,25 +1,26 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, status
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.core.database import get_db
-from app.services.cart import CartService
-from app.schemas.cart import (
+from app.core.database import get_async_db
+from app.crud.cart_crud import cart_crud, cart_item_crud
+
+from app.core.dependencies import RegularUser
+from app.schemas import ProductListResponse
+from app.schemas.cart_schema import (
     CartResponse, CartItemResponse, AddToCartRequest, 
-    UpdateCartItemRequest, ProductListResponse
+    UpdateCartItemRequest
 )
-from app.api.dependencies import get_current_active_user
-from app.models.user import User
+
 
 router = APIRouter()
 
 
 @router.get("/", response_model=CartResponse)
 async def get_cart(
-    current_user: User = Depends(get_current_active_user),
-    db: AsyncSession = Depends(get_db)
+    current_user: RegularUser = None,
+    db: AsyncSession = Depends(get_async_db)
 ):
     """Get user's shopping cart"""
-    service = CartService(db)
-    cart = await service.get_cart(current_user)
+    cart = await cart_crud.get(db, user_id=current_user)
     
     # Convert cart items to response format
     cart_items = []
@@ -68,12 +69,11 @@ async def get_cart(
 @router.post("/items", response_model=CartItemResponse, status_code=status.HTTP_201_CREATED)
 async def add_to_cart(
     request: AddToCartRequest,
-    current_user: User = Depends(get_current_active_user),
-    db: AsyncSession = Depends(get_db)
+    current_user: RegularUser = None,
+    db: AsyncSession = Depends(get_async_db)
 ):
     """Add item to cart"""
-    service = CartService(db)
-    cart_item = await service.add_to_cart(current_user, request.product_id, request.quantity)
+    cart_item = await cart_crud.add_to_cart(current_user, request.product_id, request.quantity)
     
     # Get primary image
     primary_image = None
@@ -109,12 +109,11 @@ async def add_to_cart(
 async def update_cart_item(
     item_id: int,
     request: UpdateCartItemRequest,
-    current_user: User = Depends(get_current_active_user),
-    db: AsyncSession = Depends(get_db)
+    current_user: RegularUser = None,
+    db: AsyncSession = Depends(get_async_db)
 ):
     """Update cart item quantity"""
-    service = CartService(db)
-    cart_item = await service.update_cart_item(current_user, item_id, request.quantity)
+    cart_item = await cart_item_crud.update_cart_item(current_user, item_id, request.quantity)
     
     # Get primary image
     primary_image = None
@@ -149,19 +148,18 @@ async def update_cart_item(
 @router.delete("/items/{item_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def remove_from_cart(
     item_id: int,
-    current_user: User = Depends(get_current_active_user),
-    db: AsyncSession = Depends(get_db)
+    current_user: RegularUser = None,
+    db: AsyncSession = Depends(get_async_db)
 ):
     """Remove item from cart"""
-    service = CartService(db)
-    await service.remove_from_cart(current_user, item_id)
+
+    await cart_crud.remove_from_cart(current_user, item_id)
 
 
 @router.delete("/", status_code=status.HTTP_204_NO_CONTENT)
 async def clear_cart(
-    current_user: User = Depends(get_current_active_user),
-    db: AsyncSession = Depends(get_db)
+    current_user: RegularUser = None,
+    db: AsyncSession = Depends(get_async_db)
 ):
     """Clear all items from cart"""
-    service = CartService(db)
-    await service.clear_cart(current_user)
+    await cart_crud.clear_cart(current_user)

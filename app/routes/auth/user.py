@@ -3,8 +3,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_async_db
 from app.schemas import UserResponse, UserCreate, UserLogin
-from app.schemas.user import LoginAPIResponse
-from app.services.auth.user_service import login_user, create_user
+from app.schemas.user_schema import LoginAPIResponse
+from app.core.auth_service.user_service import login_user, create_user
 
 router = APIRouter()
 

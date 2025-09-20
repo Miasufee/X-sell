@@ -3,11 +3,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List, Optional
 from app.core.database import get_db
 from app.services.order import OrderService
-from app.schemas.order import (
+from app.schemas.order_schema import (
     CheckoutRequest, OrderResponse, OrderListResponse, 
     OrderStatusUpdate, OrderItemResponse
 )
-from app.schemas.product import ProductListResponse
+from app.schemas.product_schema import ProductListResponse
 from app.api.dependencies import get_current_active_user, get_current_admin
 from app.models.user import User
 from app.models.order import OrderStatus

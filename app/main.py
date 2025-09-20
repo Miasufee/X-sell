@@ -53,7 +53,7 @@ app.add_middleware(
 )
 
 # Include API router
-app.include_router(api_router, prefix="")
+app.include_router(api_router)
 
 @app.exception_handler(IntegrityError)
 async def integrity_error_handler(request: Request, exc: IntegrityError):
@@ -84,7 +84,7 @@ async def sqlalchemy_error_handler(request: Request, exc: SQLAlchemyError):
 async def root():
     """Root endpoint"""
     return {
-        "message": "User Management API",
+        "message": "X-sell online shopping Management API",
         "version": "1.0.0",
         "docs": "/docs",
         "redoc": "/redoc"

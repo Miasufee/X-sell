@@ -1,23 +1,9 @@
-from app.models.user import User, UserRole
-from app.models.category import Category
-from app.models.shop import Shop
-from app.models.product import (Product, ProductImage, ProductStatus, ProductAttribute,
-                                ProductAttributeValue, ProductVariantAttribute, ProductVariant)
-from app.models.cart import Cart, CartItem
-from app.models.order import Order, OrderItem, OrderStatus
-from app.models.delivery import Delivery, DeliveryStatus
-from app.models.review import Review, Favorite
-from app.models.merchant import MerchantApplication, MerchantApplicationStatus
-
-__all__ = [
-    "User", "UserRole",
-    "Category",
-    "Shop",
-    "Product", "ProductImage", "ProductStatus", "ProductAttribute",
-    "ProductAttributeValue", "ProductVariant", "ProductVariantAttribute",
-    "Cart", "CartItem",
-    "Order", "OrderItem", "OrderStatus",
-    "Delivery", "DeliveryStatus",
-    "Review", "Favorite",
-    "MerchantApplication", "MerchantApplicationStatus"
-]
+from .user import *
+from .order import *
+from .cart import *
+from .shop import *
+from .category import *
+from .delivery import *
+from .product import *
+from .review import *
+from .delivery import *

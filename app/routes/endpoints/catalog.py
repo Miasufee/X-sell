@@ -4,12 +4,12 @@ from typing import List, Optional
 from app.core.database import get_db
 from app.services.search import SearchService
 from app.services.recommendation import RecommendationService
-from app.schemas.search import (
+from app.schemas.search_schema import (
     SearchQuery, SearchResponse, SearchResult, 
     RecommendationRequest, RecommendationResponse, TrendingProductsResponse
 )
-from app.schemas.product import ProductListResponse
-from app.schemas.shop import ShopResponse
+from app.schemas.product_schema import ProductListResponse
+from app.schemas.shop_schema import ShopResponse
 from app.api.dependencies import get_current_user
 from app.models.user import User
 

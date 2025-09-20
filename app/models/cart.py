@@ -7,10 +7,7 @@ from .base import Base, IntIdMixin, TimeStampMixin
 class Cart(Base, IntIdMixin, TimeStampMixin):
     __tablename__ = "carts"
 
-    id = Column(Integer, primary_key=True, index=True)
     total_amount = Column(Float, default=0.0)
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
     # Foreign Keys
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
@@ -23,12 +20,9 @@ class Cart(Base, IntIdMixin, TimeStampMixin):
 class CartItem(Base, IntIdMixin, TimeStampMixin):
     __tablename__ = "cart_items"
 
-    id = Column(Integer, primary_key=True, index=True)
     quantity = Column(Integer, nullable=False, default=1)
     unit_price = Column(Float, nullable=False)
     total_price = Column(Float, nullable=False)
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
     # Foreign Keys
     cart_id = Column(Integer, ForeignKey("carts.id"), nullable=False)

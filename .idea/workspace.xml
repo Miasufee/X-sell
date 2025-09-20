@@ -5,21 +5,76 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a184538-f5ef-4a0a-9ccd-5fc452f27e5d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/routes/auth/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/core/auth_service/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/crud/category_crud.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/crud/crud_base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/crud/merchant_crud.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/crud/product_crud.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/crud/shop_crud.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/categories_routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/merchant_routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/products_routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/endpoints/shops_routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/category_schema.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/merchant_schema.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/product_schema.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/schema_base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/shop_schema.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/utils/token_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/utils/token_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/crud/product.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud/product.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/dependencies.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/dependencies.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud/cart_crud.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud/category.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud/delivery.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud/delivery_crud.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud/marchant.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud/order_crud.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud/product.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud/refreshed_token_crud.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud/refreshed_token_crud.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud/review.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud/review_crud.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud/shop.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/crud/user_crud.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud/user_crud.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud/verification_code_crud.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud/verification_code_crud.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/cart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/category.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/merchant.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/merchant.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/product.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/product.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes/auth/super_admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth/super_admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes/auth/superuser.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth/superuser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schemas/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/auth/auth_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/auth/auth_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/auth/superuser_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/auth/superuser_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/auth/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/auth/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/endpoints/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/endpoints/cart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/endpoints/catalog.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/endpoints/catalog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/endpoints/categories.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/endpoints/merchants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/endpoints/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/endpoints/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/endpoints/products.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/endpoints/shops.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/endpoints/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/endpoints/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/cart_schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/category.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/order_schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/product.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/search_schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/shop.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/user_schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/auth/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/auth/auth_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/auth_service/auth_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/auth/superuser_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/auth_service/superuser_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/auth/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/auth_service/user_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/cart.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/delivery.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/order.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/product.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/recommendation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/search.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/shop.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +102,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.security.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -63,6 +119,7 @@
       <recent name="$PROJECT_DIR$/app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/core" />
       <recent name="$PROJECT_DIR$/app/crud" />
       <recent name="$PROJECT_DIR$/app/crud/user" />
       <recent name="$PROJECT_DIR$/app" />
@@ -71,7 +128,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d9fa9deec7cb-d902c0275401-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-252.23892.515" />
+        <option value="bundled-python-sdk-8753aad8314d-d902c0275401-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-252.25557.178" />
       </set>
     </attachedChunks>
   </component>
@@ -83,6 +140,19 @@
       <option name="presentableId" value="Default" />
       <updated>1755673038694</updated>
     </task>
+    <task id="LOCAL-00001" summary="user">
+      <option name="closed" value="true" />
+      <created>1758401108913</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758401108913</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="user" />
+    <option name="LAST_COMMIT_MESSAGE" value="user" />
   </component>
 </project>

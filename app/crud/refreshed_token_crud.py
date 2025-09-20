@@ -1,10 +1,10 @@
 from datetime import datetime, timezone
-from typing import Optional, Sequence, Any, Coroutine
+from typing import Optional, Sequence
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import and_
 
-from app.crud.base import CrudBase
+from app.crud.crud_base import CrudBase
 from app.models.user import RefreshedToken
 
 

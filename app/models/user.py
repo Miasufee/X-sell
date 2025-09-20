@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, Enum, ForeignKey, Index, UniqueConstraint
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, Enum, ForeignKey, Index, UniqueConstraint, Float
 from sqlalchemy.orm import relationship
 from enum import Enum as PyEnum
 from .base import Base, IntIdMixin, TimeStampMixin
@@ -45,6 +45,7 @@ class User(Base, IntIdMixin, TimeStampMixin):
     addresses = relationship("Address", back_populates="user", cascade="all, delete-orphan")
     verification_codes = relationship("VerificationCode", back_populates="user", cascade="all, delete-orphan")
     refreshed_tokens = relationship("RefreshedToken", back_populates="user", cascade="all, delete-orphan")
+    locations = relationship("UserLocation", back_populates="user", cascade="all, delete-orphan")
 
 
 class UserProfile(Base, IntIdMixin, TimeStampMixin):
@@ -117,3 +118,11 @@ class RefreshedToken(Base, IntIdMixin, TimeStampMixin):
 
     user = relationship("User", back_populates="refreshed_tokens")
 
+class UserLocation(Base, IntIdMixin, TimeStampMixin):
+    __tablename__ = "user_location"
+
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    latitude = Column(Float, nullable=False)
+    longitude = Column(Float, nullable=False)
+
+    user = relationship("User", back_populates="locations")

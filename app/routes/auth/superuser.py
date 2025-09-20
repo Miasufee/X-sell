@@ -3,18 +3,16 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_async_db
 from app.core.dependencies import SuperUser
-from app.schemas import UserResponse
-from app.schemas.user import (
+from app.schemas.user_schema import (
     SuperUserCreate,
     SuperUserLogin,
     ApproveRequest,
     ToggleFlagAPIResponse,
     LoginAPIResponse,
-    RoleUpdateRequest,
-    ToggleRoleAPIResponse
+    RoleUpdateRequest
 )
-from app.services.auth.auth_utils import login, update_role, _get_user_list
-from app.services.auth.superuser_service import create_superuser, toggle_flag
+from app.core.auth_service.auth_utils import login, update_role, _get_user_lists
+from app.core.auth_service.superuser_service import create_superuser, toggle_flag
 import logging
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -29,13 +27,8 @@ async def _create_superuser(payload: SuperUserCreate, db: AsyncSession = Depends
         secret_key=payload.superuser_secret_key
     )
 
-
-
 @router.post("/login", response_model=LoginAPIResponse)
 async def login_superuser(payload: SuperUserLogin, db: AsyncSession = Depends(get_async_db)):
-    # Log the full payload received
-    logger.info("Login request payload: %s", payload.dict())
-
     return await login(
         db=db,
         email=payload.email,
@@ -57,4 +50,4 @@ async def _update_role(req: RoleUpdateRequest, db: AsyncSession = Depends(get_as
 
 @router.get("/users")
 async def get_users_lists(db: AsyncSession = Depends(get_async_db), _: SuperUser = None):
-    return await _get_user_list(db)
+    return await _get_user_lists(db)
