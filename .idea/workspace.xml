@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a184538-f5ef-4a0a-9ccd-5fc452f27e5d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ROADMAP.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/crud/crud_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud/crud_base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/crud/merchant_crud.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud/merchant_crud.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/crud/shop_crud.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud/shop_crud.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/merchant.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/merchant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/endpoints/merchant_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/endpoints/merchant_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/endpoints/shops_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/endpoints/shops_routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,17 +30,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.security.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/mia/Documents/projects/x-sell-v2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.security.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/mia/Documents/projects/x-sell-v2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
