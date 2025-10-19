@@ -1,14 +1,13 @@
 from math import cos
 
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import and_, or_, select, func
-from typing import Optional, List, Dict, Any, Coroutine, Sequence
+from sqlalchemy import and_, or_, select
+from typing import Optional, List, Dict, Any, Sequence
 from .crud_base import CrudBase
-from app.models import Shop, User
-from app.core.dependencies import CurrentUser, AdminUser
+from app.models import Shop
 
 
-class ShopService(CrudBase[Shop]):
+class ShopCrud(CrudBase[Shop]):
     """Service for handling shop operations."""
 
     def __init__(self):
@@ -70,9 +69,9 @@ class ShopService(CrudBase[Shop]):
         """Get shop with merchant information."""
         from sqlalchemy.orm import joinedload
 
-        stmt = select(Shop).options(
-            joinedload(Shop.merchant)
-        ).where(Shop.id == shop_id)
+        stmt = select(self.model).options(
+            joinedload(self.model.merchant)
+        ).where(self.model.id.is_(shop_id))
 
         result = await db.execute(stmt)
         return result.scalar_one_or_none()
@@ -213,3 +212,5 @@ class ShopService(CrudBase[Shop]):
             filters={"id": shop_ids, "merchant_id": merchant_id},
             update_values=update_data
         )
+
+shop_crud = ShopCrud()

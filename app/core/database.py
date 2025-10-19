@@ -8,7 +8,7 @@ from app.models.base import Base
 
 logger = logging.getLogger(__name__)
 
-# Construct the AsyncPostgreSQL connection URL
+# Construct the AsyncPostgresSQL connection URL
 ASYNC_SQLALCHEMY_DATABASE_URL = settings.database_url
 
 # Create the async engine with optimized settings

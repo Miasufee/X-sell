@@ -1,3 +1,5 @@
+from typing import List
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -10,9 +12,9 @@ from app.schemas import (
     ShopStats,
     PaginatedResponse
 )
-from app.crud.shop_crud import ShopService
+from app.crud.shop_crud import shop_crud
 from app.core.dependencies import CurrentUser
-from app.crud.merchant_crud import MerchantService
+from app.crud.merchant_crud import merchant_crud
 
 router = APIRouter(prefix="/shops", tags=["shops"])
 
@@ -25,16 +27,15 @@ async def create_shop(
 ):
     """Create a new shop (Merchant only)."""
     # Check if user is approved merchant
-    merchant_service = MerchantService()
-    application = await merchant_service.get_user_application(db, current_user.id)
+
+    application = await merchant_crud.get_user_application(db, current_user.id)
     if not application or application.status != "approved":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="You need to be an approved merchant to create a shop"
         )
 
-    service = ShopService()
-    return await service.create_shop(db, current_user.id, **shop_data.model_dump())
+    return await shop_crud.create_shop(db, current_user.id, **shop_data.model_dump())
 
 
 @router.get("/my-shops", response_model=List[ShopResponse])
@@ -44,8 +45,7 @@ async def get_my_shops(
         current_user: CurrentUser = Depends()
 ):
     """Get current user's shops."""
-    service = ShopService()
-    return await service.get_merchant_shops(db, current_user.id, active_only)
+    return await shop_crud.get_merchant_shops(db, current_user.id, active_only)
 
 
 @router.get("/", response_model=PaginatedResponse[ShopResponse])
@@ -54,10 +54,9 @@ async def search_shops(
         db: AsyncSession = Depends(get_async_db)
 ):
     """Search shops with various filters."""
-    service = ShopService()
     skip = (search_params.page - 1) * search_params.per_page
 
-    shops = await service.search_shops(
+    shops = await shop_crud.search_shops(
         db,
         search_term=search_params.search_term,
         latitude=search_params.latitude,
@@ -68,7 +67,7 @@ async def search_shops(
         limit=search_params.per_page
     )
 
-    total = await service.count(db, filters={"is_active": True} if search_params.active_only else {})
+    total = await shop_crud.count(db, filters={"is_active": True} if search_params.active_only else {})
 
     return {
         "items": shops,
@@ -90,8 +89,7 @@ async def get_nearby_shops(
         db: AsyncSession = Depends(get_async_db)
 ):
     """Get shops near a specific location."""
-    service = ShopService()
-    return await service.get_nearby_shops(db, latitude, longitude, radius_km, limit)
+    return await shop_crud.get_nearby_shops(db, latitude, longitude, radius_km, limit)
 
 
 @router.get("/{shop_id}", response_model=ShopResponse)
@@ -100,8 +98,7 @@ async def get_shop(
         db: AsyncSession = Depends(get_async_db)
 ):
     """Get specific shop details."""
-    service = ShopService()
-    shop = await service.get(db, obj_id=shop_id)
+    shop = await shop_crud.get(db, obj_id=shop_id)
     if not shop or not shop.is_active:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -118,8 +115,7 @@ async def update_shop(
         current_user: CurrentUser = Depends()
 ):
     """Update shop details (Shop owner only)."""
-    service = ShopService()
-    shop = await service.update_shop(db, shop_id, current_user.id, **shop_data.model_dump(exclude_unset=True))
+    shop = await shop_crud.update_shop(db, shop_id, current_user.id, **shop_data.model_dump(exclude_unset=True))
     if not shop:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -135,8 +131,7 @@ async def toggle_shop_status(
         current_user: CurrentUser = Depends()
 ):
     """Toggle shop active status (Shop owner only)."""
-    service = ShopService()
-    shop = await service.toggle_shop_status(db, shop_id, current_user.id)
+    shop = await shop_crud.toggle_shop_status(db, shop_id, current_user.id)
     if not shop:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -151,5 +146,4 @@ async def get_my_shop_stats(
         current_user: CurrentUser = Depends()
 ):
     """Get current user's shop statistics."""
-    service = ShopService()
-    return await service.get_shop_stats(db, current_user.id)
+    return await shop_crud.get_shop_stats(db, current_user.id)

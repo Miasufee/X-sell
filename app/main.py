@@ -33,8 +33,8 @@ async def lifespan(app: FastAPI):
 
 # Create FastAPI application
 app = FastAPI(
-    title="User Management API",
-    description="A comprehensive user management system with authentication",
+    title="X-sell merket place API",
+    description="merket place",
     version="1.0.0",
     openapi_url="/api/v1/openapi.json",
     docs_url="/docs",

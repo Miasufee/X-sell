@@ -20,9 +20,7 @@ class User(Base, IntIdMixin, TimeStampMixin):
     __tablename__ = "users"
 
     email = Column(String, unique=True, index=True, nullable=False)
-    admin_approval = Column(Boolean, default=False, nullable=False)
     hashed_password = Column(String(255), nullable=True)
-    is_super_admin = Column(Boolean, default=False, nullable=False)
     unique_id = Column(String(15), nullable=True, unique=True)
     token_version = Column(Integer, default=1, nullable=False)
     role = Column(Enum(UserRole), default=UserRole.USER, nullable=False)
